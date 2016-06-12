@@ -201,11 +201,11 @@
 		EF030B9F1D0D93160058BC7F /* MapView */ = {
 			isa = PBXGroup;
 			children = (
-				EFDB722F1D0DE855000D0F9B /* SDWebImage */,
 				EF030BA61D0DAFA00058BC7F /* CustomInfoWindow */,
 				EF030BA01D0D93380058BC7F /* GMSViewViewController.swift */,
 			);
 			name = MapView;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		EF030BA61D0DAFA00058BC7F /* CustomInfoWindow */ = {
@@ -220,8 +220,8 @@
 		EFB03D561D0D38D50039650E = {
 			isa = PBXGroup;
 			children = (
-				EF030B9F1D0D93160058BC7F /* MapView */,
 				EFB03D611D0D38D50039650E /* TestSample */,
+				EFDB722F1D0DE855000D0F9B /* SDWebImage */,
 				EFB03D761D0D38D50039650E /* TestSampleTests */,
 				EFB03D811D0D38D50039650E /* TestSampleUITests */,
 				EFB03D601D0D38D50039650E /* Products */,
@@ -246,6 +246,7 @@
 				EFB03D621D0D38D50039650E /* AppDelegate.swift */,
 				EFB03D641D0D38D50039650E /* ViewController.swift */,
 				EF030B9E1D0D90B20058BC7F /* TabView */,
+				EF030B9F1D0D93160058BC7F /* MapView */,
 				EF030B9D1D0D90990058BC7F /* CollectioView */,
 				EFB03D661D0D38D50039650E /* Main.storyboard */,
 				EFB03D691D0D38D50039650E /* Assets.xcassets */,
