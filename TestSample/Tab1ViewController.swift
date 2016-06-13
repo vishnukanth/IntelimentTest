@@ -12,13 +12,16 @@ import AudioToolbox
 class Tab1ViewController: UIViewController {
 
     var torchValue : Bool = false
-    
+    private var dpShowDateVisible = false
     @IBOutlet weak var Tab1TableView: UITableView?
+    var tempPicker: UIDatePicker!
+    
     
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //self.Tab1TableView!.rowHeight = UITableViewAutomaticDimension
         print("Hello World");
         
         // Do any additional setup after loading the view.
@@ -29,10 +32,11 @@ class Tab1ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
 
     func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int
     {
-        return 3;
+        return 5;
     }
     
     func tableView(tableView: UITableView!,
@@ -67,9 +71,75 @@ class Tab1ViewController: UIViewController {
             
         }
         
+        if indexPath.row == 3{
+            cell = tableView.dequeueReusableCellWithIdentifier("datainputview", forIndexPath: indexPath) as! Tab1PushCell
+            if(dpShowDateVisible)
+            {
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                let dateString = dateFormatter.stringFromDate(tempPicker.date)
+                cell.dateInputField.text = dateString
+            }
+            
+        }
+        
+        if indexPath.row == 4{
+            cell = tableView.dequeueReusableCellWithIdentifier("datepickerview", forIndexPath: indexPath) as! Tab1PushCell
+            cell.datePicker .addTarget(self, action: #selector(Tab1ViewController.dateChanged(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        }
+        
         return cell
     }
     
+     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+     {
+        
+        if indexPath.row == 3 {
+            //Hide and Show date picker by selecting cell
+            toggleShowDateDatepicker()
+        }
+    
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    func tableView(tableView:UITableView,heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    {
+        
+        var height:CGFloat = self.Tab1TableView!.rowHeight
+        
+        if (indexPath.row == 4)
+        {
+            height = dpShowDateVisible ? 200.0 : 0.0
+            
+        }
+        
+        if (indexPath.row == 3)
+        {
+            height = 89.0
+            
+        }
+        
+        return height;
+    }
+    
+    private func toggleShowDateDatepicker () {
+        dpShowDateVisible = !dpShowDateVisible
+        
+        Tab1TableView!.beginUpdates()
+        Tab1TableView!.endUpdates()
+    }
+    
+    
+    
+    func dateChanged(picker:UIDatePicker)
+  {
+    tempPicker = picker;
+    print(tempPicker.date)
+    Tab1TableView?.reloadData()
+    
+  }
+    
+    //Switch method for TorchMode
     func switchChanged(mySwitch: UISwitch)
     {
         let device: AVCaptureDevice? = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
@@ -122,7 +192,7 @@ class Tab1ViewController: UIViewController {
     }
     
     
-    
+    // Method to handle torch mode ON/OFF
     func turnTorchOnInFlashMode() -> Void
     {
         let device:AVCaptureDevice? = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
@@ -153,6 +223,13 @@ class Tab1ViewController: UIViewController {
         }
         
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController!.navigationController?.navigationBar.topItem?.title = "Main View"
+    }
+
+        
     /*
     // MARK: - Navigation
 

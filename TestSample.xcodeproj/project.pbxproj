@@ -16,6 +16,7 @@
 		EF030BA81D0DB0040058BC7F /* CustomInfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF030BA71D0DB0040058BC7F /* CustomInfoWindow.swift */; };
 		EF0842211D0D64BC00E772CC /* ImageCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0842201D0D64BC00E772CC /* ImageCollection.swift */; };
 		EF0842231D0D64D600E772CC /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0842221D0D64D600E772CC /* CollectionCell.swift */; };
+		EF15C7FB1D0E2A6D00B677B9 /* DismissSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF15C7FA1D0E2A6D00B677B9 /* DismissSegue.swift */; };
 		EF3FC96E1D0D456C00B3E074 /* Tab1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3FC96D1D0D456C00B3E074 /* Tab1ViewController.swift */; };
 		EF3FC9701D0D4D5800B3E074 /* Tab1PushCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3FC96F1D0D4D5800B3E074 /* Tab1PushCell.swift */; };
 		EFB03D631D0D38D50039650E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB03D621D0D38D50039650E /* AppDelegate.swift */; };
@@ -41,6 +42,7 @@
 		EFDB725E1D0DE855000D0F9B /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = EFDB724C1D0DE855000D0F9B /* UIImageView+HighlightedWebCache.m */; };
 		EFDB725F1D0DE855000D0F9B /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = EFDB724E1D0DE855000D0F9B /* UIImageView+WebCache.m */; };
 		EFDB72601D0DE855000D0F9B /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = EFDB72501D0DE855000D0F9B /* UIView+WebCacheOperation.m */; };
+		EFDB72651D0DEDBF000D0F9B /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDB72641D0DEDBF000D0F9B /* PageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,7 @@
 		EF030BA71D0DB0040058BC7F /* CustomInfoWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomInfoWindow.swift; sourceTree = "<group>"; };
 		EF0842201D0D64BC00E772CC /* ImageCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollection.swift; sourceTree = "<group>"; };
 		EF0842221D0D64D600E772CC /* CollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionCell.swift; sourceTree = "<group>"; };
+		EF15C7FA1D0E2A6D00B677B9 /* DismissSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissSegue.swift; sourceTree = "<group>"; };
 		EF3FC96D1D0D456C00B3E074 /* Tab1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tab1ViewController.swift; sourceTree = "<group>"; };
 		EF3FC96F1D0D4D5800B3E074 /* Tab1PushCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tab1PushCell.swift; sourceTree = "<group>"; };
 		EF3FC9761D0D58D300B3E074 /* TestSample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestSample-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -124,6 +127,7 @@
 		EFDB724E1D0DE855000D0F9B /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		EFDB724F1D0DE855000D0F9B /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		EFDB72501D0DE855000D0F9B /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		EFDB72641D0DEDBF000D0F9B /* PageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		F4586BF5EEA178EBE3B5BCF2 /* Pods_TestSampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestSampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -243,6 +247,7 @@
 		EFB03D611D0D38D50039650E /* TestSample */ = {
 			isa = PBXGroup;
 			children = (
+				EFDB72611D0DEB49000D0F9B /* PageView */,
 				EFB03D621D0D38D50039650E /* AppDelegate.swift */,
 				EFB03D641D0D38D50039650E /* ViewController.swift */,
 				EF030B9E1D0D90B20058BC7F /* TabView */,
@@ -253,6 +258,7 @@
 				EFB03D6B1D0D38D50039650E /* LaunchScreen.storyboard */,
 				EFB03D6E1D0D38D50039650E /* Info.plist */,
 				EF3FC9761D0D58D300B3E074 /* TestSample-Bridging-Header.h */,
+				EF15C7FA1D0E2A6D00B677B9 /* DismissSegue.swift */,
 			);
 			path = TestSample;
 			sourceTree = "<group>";
@@ -313,6 +319,14 @@
 				EFDB72501D0DE855000D0F9B /* UIView+WebCacheOperation.m */,
 			);
 			path = SDWebImage;
+			sourceTree = "<group>";
+		};
+		EFDB72611D0DEB49000D0F9B /* PageView */ = {
+			isa = PBXGroup;
+			children = (
+				EFDB72641D0DEDBF000D0F9B /* PageView.swift */,
+			);
+			name = PageView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -599,9 +613,11 @@
 				EFDB72531D0DE855000D0F9B /* SDImageCache.m in Sources */,
 				EFB03D631D0D38D50039650E /* AppDelegate.swift in Sources */,
 				EF0842231D0D64D600E772CC /* CollectionCell.swift in Sources */,
+				EFDB72651D0DEDBF000D0F9B /* PageView.swift in Sources */,
 				EFDB725B1D0DE855000D0F9B /* UIImage+GIF.m in Sources */,
 				EFDB72561D0DE855000D0F9B /* SDWebImageDownloader.m in Sources */,
 				EFDB725F1D0DE855000D0F9B /* UIImageView+WebCache.m in Sources */,
+				EF15C7FB1D0E2A6D00B677B9 /* DismissSegue.swift in Sources */,
 				EFDB72511D0DE855000D0F9B /* MKAnnotationView+WebCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

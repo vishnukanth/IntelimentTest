@@ -13,6 +13,9 @@ class Tab1PushCell: UITableViewCell
     @IBOutlet weak var pushLabel : UILabel!
     @IBOutlet weak var modalLabel : UILabel!
     @IBOutlet weak var toggleSwitch :UISwitch!
+    @IBOutlet weak var dateInputBtn :UIButton!
+    @IBOutlet weak var dateInputField: UITextField!
+    @IBOutlet weak var datePicker : UIDatePicker!
 
     override func awakeFromNib() {
         super.awakeFromNib()

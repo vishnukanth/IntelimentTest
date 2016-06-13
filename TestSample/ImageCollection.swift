@@ -66,6 +66,7 @@ class ImageCollection: UICollectionViewController {
         let url = NSURL(string: imageURLS[indexPath.row])
         
         
+        //Lazy loading through sdwebimage
         cell.lazyView.sd_setImageWithURL(url, placeholderImage: UIImage(named: "placeholder"), options: SDWebImageOptions.AllowInvalidSSLCertificates, completed: block)
         
         // Configure the cell

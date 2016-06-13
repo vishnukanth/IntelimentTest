@@ -162,6 +162,10 @@ class GMSViewViewController: UIViewController,CLLocationManagerDelegate,GMSMapVi
     }
     
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController!.title = "Map View"
+    }
     /*
     // MARK: - Navigation
 
