@@ -10,12 +10,15 @@ import UIKit
 
 class Tab1PushCell: UITableViewCell
 {
-    @IBOutlet weak var pushLabel : UILabel!
-    @IBOutlet weak var modalLabel : UILabel!
-    @IBOutlet weak var toggleSwitch :UISwitch!
-    @IBOutlet weak var dateInputBtn :UIButton!
+    @IBOutlet weak var pushLabel :     UILabel!
+    @IBOutlet weak var modalLabel :    UILabel!
+    @IBOutlet weak var toggleSwitch :  UISwitch!
+    @IBOutlet weak var dateInputBtn :  UIButton!
     @IBOutlet weak var dateInputField: UITextField!
-    @IBOutlet weak var datePicker : UIDatePicker!
+    @IBOutlet weak var datePicker :    UIDatePicker!
+    @IBOutlet weak var titleField :    UITextField!
+    @IBOutlet weak var subTitleField : UITextField!
+    @IBOutlet weak var picker :        UIButton!
 
     override func awakeFromNib() {
         super.awakeFromNib()

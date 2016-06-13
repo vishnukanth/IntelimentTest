@@ -9,20 +9,40 @@
 import UIKit
 import AVFoundation
 import AudioToolbox
-class Tab1ViewController: UIViewController {
 
+class Tab1ViewController: UIViewController,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+
+    var activeText: UITextField!
     var torchValue : Bool = false
     private var dpShowDateVisible = false
     @IBOutlet weak var Tab1TableView: UITableView?
     var tempPicker: UIDatePicker!
+    var isKeyboard: Bool = false
+    var imageData: NSData!
+    var pDetails = PersonDetails?()
+    var dateString : String!
+    var tStr: String!
+    var STStr : String!
     
     
+    let imagePicker = UIImagePickerController()
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.Tab1TableView!.rowHeight = UITableViewAutomaticDimension
         print("Hello World");
+        imagePicker.delegate = self
+       // activeText.delegate = self
+      
+        NSNotificationCenter.defaultCenter().addObserver(self,
+                                                         selector: #selector(Tab1ViewController.keyboardWillShow(_:)),
+                                                         name: UIKeyboardWillShowNotification,
+                                                         object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self,
+                                                         selector: #selector(Tab1ViewController.keyboardWillHide(_:)),
+                                                         name: UIKeyboardWillHideNotification,
+                                                         object: nil)
         
         // Do any additional setup after loading the view.
     }
@@ -32,11 +52,77 @@ class Tab1ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func textFieldDidBeginEditing(textField: UITextField)
+    {
+        
+        activeText = nil
+        activeText = textField
+    }
     
+    func textFieldDidEndEditing(textField: UITextField)
+    {
+        if(textField.tag == 1)
+        {
+          tStr = textField.text
+        }
+        if(textField.tag == 2)
+        {
+            STStr = textField.text
+        }
+        activeText = nil
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool
+    {
+        textField.resignFirstResponder()
+        return false
+    }
+    
+    func keyboardWillShow(note: NSNotification)
+    {
+        if let keyboardSize = (note.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue()
+        {
+            if(!isKeyboard)
+            {
+                isKeyboard = true
+                var frame = Tab1TableView!.frame
+                UIView.beginAnimations(nil, context: nil)
+                UIView.setAnimationBeginsFromCurrentState(true)
+                UIView.setAnimationDuration(0.3)
+                frame.size.height -= keyboardSize.height
+                Tab1TableView!.frame = frame
+                if activeText != nil {
+                    let rect = Tab1TableView!.convertRect(activeText.bounds, fromView: activeText)
+                    Tab1TableView!.scrollRectToVisible(rect, animated: false)
+                }
+                UIView.commitAnimations()
+
+            }
+        }
+    }
+    
+    func keyboardWillHide(note: NSNotification)
+    {
+        if let keyboardSize = (note.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue()
+        {
+            if(isKeyboard)
+            {
+                isKeyboard = false
+                var frame = Tab1TableView!.frame
+                UIView.beginAnimations(nil, context: nil)
+                UIView.setAnimationBeginsFromCurrentState(true)
+                UIView.setAnimationDuration(0.3)
+                frame.size.height += keyboardSize.height
+                Tab1TableView!.frame = frame
+                UIView.commitAnimations()
+            }
+            
+        }
+    }
 
     func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int
     {
-        return 5;
+        return 6;
     }
     
     func tableView(tableView: UITableView!,
@@ -77,7 +163,7 @@ class Tab1ViewController: UIViewController {
             {
                 let dateFormatter = NSDateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd"
-                let dateString = dateFormatter.stringFromDate(tempPicker.date)
+                dateString = dateFormatter.stringFromDate(tempPicker.date)
                 cell.dateInputField.text = dateString
             }
             
@@ -88,18 +174,52 @@ class Tab1ViewController: UIViewController {
             cell.datePicker .addTarget(self, action: #selector(Tab1ViewController.dateChanged(_:)), forControlEvents: UIControlEvents.ValueChanged)
         }
         
+        if indexPath.row == 5{
+            cell = tableView.dequeueReusableCellWithIdentifier("userview", forIndexPath: indexPath) as! Tab1PushCell
+            cell.picker .addTarget(self, action: #selector(Tab1ViewController.launchImagePicker(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+            if(imageData != nil)
+            {
+                cell.picker .setImage(UIImage(data: imageData)  , forState: UIControlState.Normal)
+            }
+        }
+        
         return cell
     }
     
      func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
      {
         
-        if indexPath.row == 3 {
+        if indexPath.row == 3
+        {
             //Hide and Show date picker by selecting cell
             toggleShowDateDatepicker()
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        }
+        
+        if(indexPath.row == 1)
+        {
+            if(imageData != nil && tStr != nil && STStr != nil && dateString != nil)
+            {
+                pDetails = PersonDetails(data: imageData, tempT: tStr, tempST: STStr, tempd: dateString)
+            }
+            
+            performSegueWithIdentifier("userDetailsView", sender: self)
         }
     
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "userDetailsView")
+        {
+            
+            let nav = segue.destinationViewController as! UINavigationController
+            let addUserDetails = nav.topViewController as! DetailsView
+            
+            addUserDetails.pDetails = pDetails
+            
+            // pass data to next view
+        }
     }
     
     func tableView(tableView:UITableView,heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
@@ -119,6 +239,12 @@ class Tab1ViewController: UIViewController {
             
         }
         
+        if (indexPath.row == 5)
+        {
+            height = 200.0
+            
+        }
+        
         return height;
     }
     
@@ -129,7 +255,30 @@ class Tab1ViewController: UIViewController {
         Tab1TableView!.endUpdates()
     }
     
+    func launchImagePicker(sender:UIButton) -> Void
+    {
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .PhotoLibrary
+        
+        presentViewController(imagePicker, animated: true, completion: nil)
+    }
     
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            imageData = UIImagePNGRepresentation(pickedImage)
+        }
+        
+        
+        dismissViewControllerAnimated(true, completion: nil)
+        dispatch_async(dispatch_get_main_queue()) { [unowned self] in
+            self.Tab1TableView?.reloadData()
+        }
+        
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
     
     func dateChanged(picker:UIDatePicker)
   {
@@ -224,11 +373,19 @@ class Tab1ViewController: UIViewController {
         
     }
     
+    
+     //Called when the user click on the view (outside the UITextField).
+
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController!.navigationController?.navigationBar.topItem?.title = "Main View"
     }
-
+    
+    
         
     /*
     // MARK: - Navigation
