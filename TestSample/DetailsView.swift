@@ -15,26 +15,31 @@ class DetailsView: UIViewController {
     @IBOutlet weak var dateLbl : UILabel!
     @IBOutlet weak var buttomImage : UIButton!
     
-    var pDetails = PersonDetails?()
+    var titleStr : String!
+    var subStr : String!
+    var imgData : NSData!
+    var dateStr : String!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if(pDetails?.returnData() != nil)
+        if(imgData != nil)
         {
-          buttomImage .setImage(UIImage(data: pDetails!.returnData())  , forState: UIControlState.Normal)
+          buttomImage .setImage(UIImage(data: imgData)  , forState: UIControlState.Normal)
         }
-        if(pDetails?.getSubTitle() != nil)
+        if(subStr != nil)
         {
-           subtitleLbl.text = pDetails?.getSubTitle()
+           subtitleLbl.text = subStr
         }
-        if(pDetails?.getTitle() != nil)
+        if(titleStr != nil)
         {
-            titleLbl.text = pDetails?.getTitle()
+            titleLbl.text = titleStr
         }
-        if(pDetails?.getDate() != nil)
+        if(dateStr != nil)
         {
-            dateLbl.text = pDetails?.getDate()
+            dateLbl.text = dateStr
         }
         
         

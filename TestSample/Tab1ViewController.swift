@@ -19,7 +19,6 @@ class Tab1ViewController: UIViewController,UITextFieldDelegate,UIImagePickerCont
     var tempPicker: UIDatePicker!
     var isKeyboard: Bool = false
     var imageData: NSData!
-    var pDetails = PersonDetails?()
     var dateString : String!
     var tStr: String!
     var STStr : String!
@@ -198,10 +197,6 @@ class Tab1ViewController: UIViewController,UITextFieldDelegate,UIImagePickerCont
         
         if(indexPath.row == 1)
         {
-            if(imageData != nil && tStr != nil && STStr != nil && dateString != nil)
-            {
-                pDetails = PersonDetails(data: imageData, tempT: tStr, tempST: STStr, tempd: dateString)
-            }
             
             performSegueWithIdentifier("userDetailsView", sender: self)
         }
@@ -215,8 +210,26 @@ class Tab1ViewController: UIViewController,UITextFieldDelegate,UIImagePickerCont
             
             let nav = segue.destinationViewController as! UINavigationController
             let addUserDetails = nav.topViewController as! DetailsView
+            if(imageData != nil)
+            {
+                addUserDetails.imgData = imageData
+            }
             
-            addUserDetails.pDetails = pDetails
+            if(tStr != nil)
+            {
+                addUserDetails.titleStr = tStr
+            }
+            
+            if(STStr != nil)
+            {
+                addUserDetails.subStr = STStr
+            }
+            
+            if(dateString != nil)
+            {
+                addUserDetails.dateStr = dateString
+            }
+            
             
             // pass data to next view
         }

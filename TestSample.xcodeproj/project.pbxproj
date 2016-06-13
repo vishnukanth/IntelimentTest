@@ -14,8 +14,7 @@
 		EF030BA31D0D96720058BC7F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF030BA21D0D96720058BC7F /* CoreLocation.framework */; };
 		EF030BA51D0DAF110058BC7F /* CustomInfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF030BA41D0DAF110058BC7F /* CustomInfoWindow.xib */; };
 		EF030BA81D0DB0040058BC7F /* CustomInfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF030BA71D0DB0040058BC7F /* CustomInfoWindow.swift */; };
-		EF03DDFD1D0EA05A0011EC8B /* PersonDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF03DDFC1D0EA05A0011EC8B /* PersonDetails.swift */; };
-		EF03DDFF1D0EACF60011EC8B /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF03DDFE1D0EACF60011EC8B /* DetailsView.swift */; };
+		EF03DE011D0EB5440011EC8B /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF03DE001D0EB5440011EC8B /* DetailsView.swift */; };
 		EF0842211D0D64BC00E772CC /* ImageCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0842201D0D64BC00E772CC /* ImageCollection.swift */; };
 		EF0842231D0D64D600E772CC /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0842221D0D64D600E772CC /* CollectionCell.swift */; };
 		EF15C7FB1D0E2A6D00B677B9 /* DismissSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF15C7FA1D0E2A6D00B677B9 /* DismissSegue.swift */; };
@@ -77,8 +76,7 @@
 		EF030BA21D0D96720058BC7F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		EF030BA41D0DAF110058BC7F /* CustomInfoWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomInfoWindow.xib; path = TestSample/CustomInfoWindow.xib; sourceTree = "<group>"; };
 		EF030BA71D0DB0040058BC7F /* CustomInfoWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomInfoWindow.swift; sourceTree = "<group>"; };
-		EF03DDFC1D0EA05A0011EC8B /* PersonDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonDetails.swift; sourceTree = "<group>"; };
-		EF03DDFE1D0EACF60011EC8B /* DetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
+		EF03DE001D0EB5440011EC8B /* DetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		EF0842201D0D64BC00E772CC /* ImageCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollection.swift; sourceTree = "<group>"; };
 		EF0842221D0D64D600E772CC /* CollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionCell.swift; sourceTree = "<group>"; };
 		EF15C7FA1D0E2A6D00B677B9 /* DismissSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissSegue.swift; sourceTree = "<group>"; };
@@ -202,7 +200,7 @@
 			children = (
 				EF3FC96D1D0D456C00B3E074 /* Tab1ViewController.swift */,
 				EF3FC96F1D0D4D5800B3E074 /* Tab1PushCell.swift */,
-				EF03DDFC1D0EA05A0011EC8B /* PersonDetails.swift */,
+				EF03DE001D0EB5440011EC8B /* DetailsView.swift */,
 			);
 			name = TabView;
 			sourceTree = "<group>";
@@ -264,7 +262,6 @@
 				EFB03D6E1D0D38D50039650E /* Info.plist */,
 				EF3FC9761D0D58D300B3E074 /* TestSample-Bridging-Header.h */,
 				EF15C7FA1D0E2A6D00B677B9 /* DismissSegue.swift */,
-				EF03DDFE1D0EACF60011EC8B /* DetailsView.swift */,
 			);
 			path = TestSample;
 			sourceTree = "<group>";
@@ -600,7 +597,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFDB72551D0DE855000D0F9B /* SDWebImageDecoder.m in Sources */,
-				EF03DDFF1D0EACF60011EC8B /* DetailsView.swift in Sources */,
 				EFDB72581D0DE855000D0F9B /* SDWebImageManager.m in Sources */,
 				EFDB72521D0DE855000D0F9B /* NSData+ImageContentType.m in Sources */,
 				EFDB72541D0DE855000D0F9B /* SDWebImageCompat.m in Sources */,
@@ -611,6 +607,7 @@
 				EF3FC9701D0D4D5800B3E074 /* Tab1PushCell.swift in Sources */,
 				EF0842211D0D64BC00E772CC /* ImageCollection.swift in Sources */,
 				EFDB725A1D0DE855000D0F9B /* UIButton+WebCache.m in Sources */,
+				EF03DE011D0EB5440011EC8B /* DetailsView.swift in Sources */,
 				EFDB72591D0DE855000D0F9B /* SDWebImagePrefetcher.m in Sources */,
 				EFDB72571D0DE855000D0F9B /* SDWebImageDownloaderOperation.m in Sources */,
 				EFB03D651D0D38D50039650E /* ViewController.swift in Sources */,
@@ -624,7 +621,6 @@
 				EFDB725B1D0DE855000D0F9B /* UIImage+GIF.m in Sources */,
 				EFDB72561D0DE855000D0F9B /* SDWebImageDownloader.m in Sources */,
 				EFDB725F1D0DE855000D0F9B /* UIImageView+WebCache.m in Sources */,
-				EF03DDFD1D0EA05A0011EC8B /* PersonDetails.swift in Sources */,
 				EF15C7FB1D0E2A6D00B677B9 /* DismissSegue.swift in Sources */,
 				EFDB72511D0DE855000D0F9B /* MKAnnotationView+WebCache.m in Sources */,
 			);
